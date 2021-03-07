@@ -6,10 +6,6 @@ public class CubeSpawner : MonoBehaviour
 {
     [Space]
     [SerializeField]
-    private Sprite pixelArtSprite;
-
-    [Space]
-    [SerializeField]
     private GameObject blockPrefab;
 
     [Space]
@@ -19,35 +15,23 @@ public class CubeSpawner : MonoBehaviour
     [System.NonSerialized]
     public int blockCount = 0;
 
-    Texture2D image;
+    private int counter;
 
-    Vector3 blockPos = Vector3.zero;
-
-    private void Awake()
+    private void Start()
     {
-        image = pixelArtSprite.texture;
-        SpawnBlocks();
-    }
+        blockCount = GameManager.instance.baseSpawner.GetBlockCount();
 
-    private void SpawnBlocks()
-    {
-        for (int x = 0; x < image.width; x++)
+        for (int i = 0; i < 10; i++)
         {
-            for (int y = 0; y < image.height; y++)
+            for (int j = 0; j < 10; j++)
             {
-                Color color = image.GetPixel(x, y);
-
-                if (color.a == 0)
+                if(counter <= blockCount)
                 {
-                    continue;
+                    GameObject baseBlock = Instantiate(blockPrefab, transform);
+                    Vector3 position = new Vector3(i * offset * 2f, 1 + j * offset * 2f, 0f);
+                    baseBlock.transform.localPosition = position;
+                    counter++;
                 }
-
-                blockPos = new Vector3(offset * (x - image.width * 0.5f), offset * 0.5f, offset * (y - image.height * 0.5f));
-                GameObject blockObject = Instantiate(blockPrefab, transform);
-                blockObject.transform.localPosition = blockPos;
-                blockObject.GetComponent<Renderer>().material.color = color;
-
-                blockCount++;
             }
         }
     }
