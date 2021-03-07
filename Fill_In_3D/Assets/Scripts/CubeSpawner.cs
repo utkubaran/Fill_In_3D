@@ -25,7 +25,7 @@ public class CubeSpawner : MonoBehaviour
         {
             for (int j = 0; j < 9; j++)
             {
-                for (int k = 0; k < 3; k++)
+                for (int k = 0; k < 4; k++)
                 {
                     if (counter < blockCount)
                     {

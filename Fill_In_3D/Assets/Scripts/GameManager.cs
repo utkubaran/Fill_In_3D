@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField] UIController uIController;
 
+    [Space]
+    [System.NonSerialized]
     public float percentProgress;
 
     private int blockCreated;
