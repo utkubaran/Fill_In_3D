@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        blockCreated = 0;
+        blockPlaced = 0;
     }
 
     // Start is called before the first frame update
