@@ -16,11 +16,11 @@ TagManager:
   - 
   - Sunk
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Outer Wall
+  - Inner Wall
+  - Player
+  - Block
+  - Base Block
   - 
   - 
   - 

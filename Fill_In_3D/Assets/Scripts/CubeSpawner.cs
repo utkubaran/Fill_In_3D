@@ -15,22 +15,26 @@ public class CubeSpawner : MonoBehaviour
     [System.NonSerialized]
     public int blockCount = 0;
 
-    private int counter;
+    public int counter;
 
     private void Start()
     {
         blockCount = GameManager.instance.baseSpawner.GetBlockCount();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 9; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 9; j++)
             {
-                if(counter <= blockCount)
+                for (int k = 0; k < 3; k++)
                 {
-                    GameObject baseBlock = Instantiate(blockPrefab, transform);
-                    Vector3 position = new Vector3(i * offset * 2f, 1 + j * offset * 2f, 0f);
-                    baseBlock.transform.localPosition = position;
-                    counter++;
+                    if (counter < blockCount)
+                    {
+                        GameObject baseBlock = Instantiate(blockPrefab, transform);
+                        Vector3 position = new Vector3(i * offset * 2f, 1 + j * offset * 2f, k * offset * 2f);
+                        baseBlock.transform.localPosition = position;
+
+                        counter++;
+                    }
                 }
             }
         }

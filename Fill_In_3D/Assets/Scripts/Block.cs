@@ -12,15 +12,13 @@ public class Block : MonoBehaviour
 
         if(baseBlock && !isPlaced)
         {
+            other.gameObject.SetActive(false);
             isPlaced = true;
 
             transform.position = other.transform.position;
             transform.rotation = other.transform.rotation;
 
-            other.gameObject.SetActive(false);
-
             GetComponent<MeshRenderer>().material.color = baseBlock.color;
-
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<Rigidbody>().useGravity = false;
 
